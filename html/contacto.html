@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Tienda Virtual - Contacto</title>
+</head>
+<body class="grid-container">
+    <header class="header">
+        <div class="header__logo">
+            <img src="../img/logo/logo_tienda.png" alt="" class="logo"> 
+        </div>
+        <div class="header__icons-action">
+            <input type="search" name="buscar_en_tienda" id="buscar_en_tienda" placeholder="Buscar en tienda">
+            <img src="../img/icons/buscar.png" alt="Buscar producto" title="Buscar producto" class="icon">
+            <img src="../img/icons/buy.png" alt="Carrito de compra" title="Carrito de compra" class="icon">
+            <img src="../img/icons/menu.png" class="icon icon_menu">
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul class="navbar__lista">
+            <li><a href="../index.html">Inicio</a></li>
+            <li>
+                <a href="../html/ofertas.html">Ofertas</a>
+            </li>
+            <li><a href="../html/sucursales.html">Sucursales</a></li>
+            <li><a href="../html/login.html">Iniciar sesión</a></li>
+            <li><a href="../html/contacto.html" class="active">Contacto</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <div class="principal">
+            <h1 class="principal__title">Contáctenos:</h1>
+            <form action="#" method="get" class="principal__form">
+                <fieldset class="principal__fieldset">
+                    <legend>Complete sus datos y nos contactaremos con usted</legend>
+                    <label for="apellido">Apellido</label>
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellido" required>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Email" required>
+
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" name="telefono" id="telefono" placeholder="Teléfono" required>
+
+                    <label for="motivo">Motivo de contacto:</label>
+                    <textarea name="motivo" id="motivo" cols="10" rows="5" required></textarea>
+                    <input type="submit" name="enviar" id="enviar" value="Enviar">
+                </fieldset>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__nav">
+            <ul>
+                <li><a href="#">Necesito Ayuda</a></li>
+                <li><a href="#">La empresa</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

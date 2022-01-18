@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Tienda Virtual - Iniciar sesión</title>
+</head>
+<body class="grid-container">
+    <header class="header">
+        <div class="header__logo">
+            <img src="../img/logo/logo_tienda.png" alt="" class="logo"> 
+        </div>
+        <div class="header__icons-action">
+            <input type="search" name="buscar_en_tienda" id="buscar_en_tienda" placeholder="Buscar en tienda">
+            <img src="../img/icons/buscar.png" alt="Buscar producto" title="Buscar producto" class="icon">
+            <img src="../img/icons/buy.png" alt="Carrito de compra" title="Carrito de compra" class="icon">
+            <img src="../img/icons/menu.png" class="icon icon_menu">
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul class="navbar__lista">
+            <li><a href="../index.html">Inicio</a></li>
+            <li>
+                <a href="../html/ofertas.html">Ofertas</a>
+            </li>
+            <li><a href="../html/sucursales.html">Sucursales</a></li>
+            <li><a href="../html/login.html" class="active">Iniciar sesión</a></li>
+            <li><a href="../html/contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <div class="principal">
+            <h1 class="principal__title">Iniciar sesión</h1>
+            <form action="" method="get" class="principal__form">
+                <fieldset class="principal__fieldset">
+                    <!-- <legend>Complete los campos</legend> -->
+                    <label for="usuario">Usuario</label>
+                    <input type="text" name="usuario" id="usuario" placeholder="Usuario" required>
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                    <input type="submit" name="login" id="login" value="Iniciar sesión">
+                    <a href="#">Olvidé mi contraseña</a>
+                    <a href="#">Registrarse</a>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__nav">
+            <ul>
+                <li><a href="#">Necesito Ayuda</a></li>
+                <li><a href="#">La empresa</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
