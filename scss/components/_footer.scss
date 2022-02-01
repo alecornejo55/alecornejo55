@@ -1,0 +1,26 @@
+/*  Footer */
+.footer {
+    grid-area: footer;
+    background: #4e236e;
+    padding: 15px 10px;
+    .footer__nav {
+        text-align: center;
+        li {
+            display: inline-block;
+            font-size: 12px;
+            &:hover a {
+                color: #eee;
+                text-decoration: underline;
+            }
+
+            a {
+                padding: 5px 10px;
+                border-left: thin solid #ccc;
+                color: #fff;
+            }
+            &:nth-of-type(1) a {
+                border-left: none;
+            }
+        }
+   }
+}

@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+// pre formateo
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100%;
+    width: 100%;
+    line-height: 1.2;
+}
+ul, ol {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+a {
+    text-decoration: none;
+}
+p {
+    margin: 0px;
+}
+// Clase grid, aplicada al body
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    "header" 
+    "nav" 
+    "main"
+    "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+// Header y Navbar
+@import "components/header";
+
+
+// @mixin de un article de compra
+@mixin sectionArticleStyle {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    padding: 10px;
+    border: thin solid rgb(214, 214, 214);
+    border-radius: 10px;
+
+    .article_img {
+        padding: 10px;
+        width: 100%;
+    }
+    .article_img img{
+        width: 100%;
+
+    }
+    span {
+        display: block;
+        width: 100%;
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    .article_action_buy {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        margin-top: 10px;
+        span {
+            font-family: 'Ubuntu', sans-serif;
+            display: inline-block;
+            width: auto;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #ed1d24 !important;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            font-size: .9rem;
+            &:hover {
+                background-color: #0069d9;
+            }
+            img {
+                width: 20px;
+            }
+        }
+    }
+}
+// Css del main
+.main {
+    grid-area: main;
+    display: flex;
+
+    // Div principal del main
+    .principal {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        hr {
+            border: 1px solid #eee;
+            margin: 0px;
+        }
+        // Título div principal
+        .principal__title {
+            font-size: 1.5rem;
+            padding: 15px;
+            text-align: left;
+            margin: 0px;
+            font-weight: bold;
+        }
+        // Iframe de un video del div principal
+        .principal__iframe {
+            width: 100%;
+            max-width: 533px;
+            height: 300px;
+            margin-bottom: 20px;
+            align-self: center;
+        }
+        .principal__section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 20px;
+            gap: 10px;
+            padding: 20px;
+            .principal__section-title {
+                width: 100%;
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: crimson;
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: left;
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+            .principal__section-article {
+                @include sectionArticleStyle();
+            }
+        }
+        /* Principal - Sucursales -> conocenos */
+        .principal__conocenos {
+            text-align: left;
+            padding: 0px 15px 15px;
+            .principal__conocenos-title {
+                text-align: left;
+                padding: 15px 0px;
+                font-weight: bold;
+                font-size: 16px;
+            }
+        }
+        /* Principal - Sucursales -> tabla sucursales*/
+        .principal__table-sucursales {
+            width: 100%;
+            max-width: 600px;
+            margin: 0px auto;
+            background-color: #daeaee;
+            th {
+                text-align: center;
+                padding: 7px 5px;
+            }
+            td {
+                padding: 7px 5px;
+                font-size: .9rem;
+            }
+            .principal__table-bg_title {
+                background-color: #1f6372;
+                color: #fff;
+                letter-spacing: 2px;
+            }
+            .principal__table-bg_subtitle {
+                background-color: #c3e3eb;
+            }
+            tbody tr:hover {
+                background-color: #c2d9df;
+            }
+        }
+    }
+}
+
+
+/* Principal - Formulario */
+.principal__form {
+    width: 100%;
+    max-width: 550px;
+    margin: 0px auto;
+    .principal__fieldset {
+        border: thin solid rgb(218, 218, 218);
+        text-align: center;
+        font-size: 16px;
+        padding: 20px;
+        label {
+            display: block;
+            width: 100%;
+            padding: 10px 0px;
+            font-size: 16px;
+            text-align: left;
+        }
+        input:not([type='submit']), textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 13px;
+            border: thin solid #3f1a5c;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type='submit'] {
+            margin-top: 15px;
+            padding: 10px 5px;
+            width: 100%;
+            background-color: #4e236e;
+            color: #fff;
+            border: thin solid #3f1a5c;
+            cursor: pointer;
+        }
+        a {
+            display: inline-block;
+            font-size: 13px;
+            margin: 20px 10px 0px 10px;
+            color: #1f6372;
+        }
+        a:hover {
+            color: #5095a5;
+            text-decoration: underline;
+        }
+    }
+}
+
+// Footer
+@import "components/footer";
+
+/* ocultamos el aside en el modo mobile */
+.principal_aside {
+    display: none;
+}
+/* Los articles del aside*/
+.principal_aside {
+    .principal_aside__section .principal_aside__section-article {
+        @include sectionArticleStyle();
+    }
+}
+
+@media only screen and (min-width:600px){
+    .header {
+        .header__icons-action {
+            input {
+                display: inline-block;
+            }
+        }
+    }
+    .main {
+        .principal {
+            .principal__section {
+                grid-template-columns: repeat(3, 1fr);
+                 .principal__section-title {
+                    grid-column-start: 1;
+                    grid-column-end: 4;
+                }
+           }
+        }
+    }
+}
+
+@media only screen and (min-width:768px){ 
+    .grid-container {
+        grid-template-areas: 
+        "header header"
+        "nav nav"
+        "aside  main"
+        "footer footer";
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto 1fr auto;
+    }
+    .navbar {
+        .navbar__lista {
+            flex-direction: row;
+            li a{
+                padding: 10px;
+                text-align: center;
+            }
+        }
+    }
+
+    .header {
+        .header__icons-action {
+            .icon_menu {
+                display: none;
+            }
+        }
+    }
+    .principal_aside {
+        display: flex;
+        flex-direction: column;
+        max-width: 250px;
+        padding: 10px;
+        p {
+            font-weight: bold;
+            font-size: 1.01rem;
+        }
+        .principal_aside__section {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+            gap: 10px;
+            .principal_aside__section-title {
+                width: 100%;
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: crimson;
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:992px){ 
+    .main {
+        .principal {
+            .principal__section {
+                grid-template-columns: repeat(4, 1fr);
+                .principal__section-title {
+                    grid-column-start: 1;
+                    grid-column-end: 5;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:1200px){ 
+
+}
