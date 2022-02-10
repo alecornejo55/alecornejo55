@@ -77,6 +77,14 @@ p {
       .navbar .navbar__lista li:hover a, .navbar .navbar__lista li a.active {
         background-color: #8a2fac; }
 
+.carousel-item img {
+  height: 300px;
+  object-fit: cover; }
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px; }
+
 .main {
   grid-area: main;
   display: flex; }
