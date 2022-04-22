@@ -1,14 +1,21 @@
 import { carritoIndex } from "./carrito.js";
+import { agregarProductoCarrito } from "./carrito.js";
 // Configuramos base url porque github no toma bien las url relativas
 let baseUrl = window.location.origin;
 if(baseUrl.includes("github") || baseUrl.includes("localhost")){
     let pathArray = window.location.pathname.split( '/' );
     baseUrl += `/${pathArray[1]}`;
 }
-
-export const mostrarProductos = (productos, from) => {
+export const moduloSistema = () => {
+    let url = window.location.pathname;
+    let modulo = url.substring(url.lastIndexOf('/')+1).replace('.html','');
+    console.log(modulo);
+    return modulo;
+}
+export const mostrarProductos = (productos) => {
     const contenedor = document.getElementById(productos.contenedor);
-    if(from != 'ofertas'){
+    const modulo = moduloSistema();
+    if(modulo != 'ofertas'){
         const par = document.createElement('p');
         par.classList.add('principal__section-title');
         par.innerHTML = `
@@ -16,7 +23,6 @@ export const mostrarProductos = (productos, from) => {
         `;
         contenedor.appendChild(par);
     }
-    console.log(baseUrl);
     productos.productos.forEach(producto => {
         const article = document.createElement('article');
         article.classList.add('principal__section-article');
@@ -35,16 +41,7 @@ export const mostrarProductos = (productos, from) => {
             </div>
         `;
         contenedor.appendChild(article);
-        const btnAgregar = document.getElementById(`btnAgregar${productos.contenedor}${producto.id}`);
-        btnAgregar.addEventListener('click', () => {
-            carritoIndex(producto.id);
-            swal.fire({
-                title: 'Genial',
-                text: `¡${producto.nombre} ha sido agregado al carrito!`,
-                icon: 'success',
-                timer: 2000,
-            });
-        });
+        agregarProductoCarrito(productos.contenedor, producto);
     });
 }
 
@@ -74,15 +71,6 @@ export const mostrarProductosAside = (productos) => {
             </div>
         `;
         contenedor.appendChild(article);
-        const btnAgregar = document.getElementById(`btnAgregar${productos.contenedor}${producto.id}`);
-        btnAgregar.addEventListener('click', () => {
-            carritoIndex(producto.id);
-            swal.fire({
-                title: 'Genial',
-                text: `¡${producto.nombre} ha sido agregado al carrito!`,
-                icon: 'success',
-                timer: 2000,
-            });
-        });
+        agregarProductoCarrito(productos.contenedor, producto);
     });
 }
