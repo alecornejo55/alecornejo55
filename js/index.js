@@ -13,7 +13,10 @@ const contenedorCarrito = document.getElementById('carritoContenedor');
 let carritoStorage = [];
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Obtengo en qué sección estoy de la web
     const modulo = moduloSistema();
+
+    //Según el muestro distintas partes del sistema
     switch(modulo){
         case 'index':
         case '':
@@ -27,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarProductosAside(productosUltimasCompras);
             break;
     }
+    //Funciones que arman el carrito en el caso de que este en localstorage
     if (localStorage.getItem("carrito")) {
         carritoStorage = JSON.parse(localStorage.getItem("carrito"))
         carritoStorage.map((producto) => {
