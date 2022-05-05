@@ -1,17 +1,21 @@
 import { carritoIndex } from "./carrito.js";
 import { agregarProductoCarrito } from "./carrito.js";
 // Configuramos base url porque github no toma bien las url relativas
-let baseUrl = window.location.origin;
-if(baseUrl.includes("github") || baseUrl.includes("localhost")){
-    let pathArray = window.location.pathname.split( '/' );
-    baseUrl += `/${pathArray[1]}`;
-}
 export const moduloSistema = () => {
     let url = window.location.pathname;
     let modulo = url.substring(url.lastIndexOf('/')+1).replace('.html','');
     // console.log(modulo);
     return modulo;
 }
+export const baseURL = () => {
+    let baseUrl = window.location.origin;
+    if(baseUrl.includes("github") || baseUrl.includes("localhost")){
+        let pathArray = window.location.pathname.split( '/' );
+        baseUrl += `/${pathArray[1]}`;
+    }
+    return baseUrl;
+}
+let baseUrl = baseURL();
 export const mostrarProductos = (productos) => {
     const contenedor = document.getElementById(productos.contenedor);
     const modulo = moduloSistema();
