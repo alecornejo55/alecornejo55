@@ -9,7 +9,7 @@ if(baseUrl.includes("github") || baseUrl.includes("localhost")){
 export const moduloSistema = () => {
     let url = window.location.pathname;
     let modulo = url.substring(url.lastIndexOf('/')+1).replace('.html','');
-    console.log(modulo);
+    // console.log(modulo);
     return modulo;
 }
 export const mostrarProductos = (productos) => {

@@ -1,13 +1,13 @@
 import { actualizarCarrito } from "./actualizarCarrito.js";
-import { productos } from "./stock.js";
+import { getData } from "./getData.js";
 
 const contenedorCarrito = document.getElementById('carritoContenedor');
 let carritoDeCompras = [];
 
-export const carritoIndex = (productoId) => {
-    if (localStorage.getItem("carrito")) {
-        carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
-    }
+export const carritoIndex = async (productoId) => {
+    // Usamos fetch para traer los productos del json
+    const productos = await getData();
+    carritoDeCompras = JSON.parse(localStorage.getItem("carrito")) ? JSON.parse(localStorage.getItem("carrito")) : carritoDeCompras;
     let producto = productos.find( producto => producto.id == productoId );
     let productoEnCarrito = carritoDeCompras.find( producto => producto.id == productoId );
     if(productoEnCarrito){
@@ -24,12 +24,11 @@ export const carritoIndex = (productoId) => {
     actualizarCarrito(carritoDeCompras);
     eliminarProductoCarrito(producto.id, producto.nombre);
     console.log(carritoDeCompras);
+    console.log(productos);
 }
 
 export const eliminarProductoCarrito = (productoId, productoNombre) => {
-    if (localStorage.getItem("carrito")) {
-      carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
-    }
+    carritoDeCompras = JSON.parse(localStorage.getItem("carrito")) ? JSON.parse(localStorage.getItem("carrito")) : carritoDeCompras;
 
     const btnEliminar = document.getElementById(`eliminar${productoId}`);
     btnEliminar.addEventListener('click', () => {
