@@ -90,7 +90,7 @@
             </table>
         </div>
         <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCarritoLabel">Carrito de compras</h5>
@@ -99,7 +99,8 @@
                 <div class="modal-body" id="carritoContenedor">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="pagarCarrito" class="btn btn-primary">Ir a pagar</button>
+                    <button type="button" id="pagarCarrito" class="btn btn-primary" style="display: none;">Ir a pagar</button>
+                    <button type="button" id="vaciarCarrito" class="btn btn-danger" style="display: none;">Vaciar carrito</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>

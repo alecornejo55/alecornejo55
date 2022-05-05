@@ -23,6 +23,7 @@ export const carritoIndex = async (productoId) => {
     }
     actualizarCarrito(carritoDeCompras);
     eliminarProductoCarrito(producto.id, producto.nombre);
+    vaciarCarrito();
     console.log(carritoDeCompras);
     console.log(productos);
 }
@@ -53,7 +54,30 @@ export const eliminarProductoCarrito = (productoId, productoNombre) => {
         });
     });
 }
-  
+export const vaciarCarrito = () => {
+    const btnVaciarCarrito = document.getElementById('vaciarCarrito');
+    btnVaciarCarrito.addEventListener('click', () => {
+        swal.fire({
+            title: `¿Está seguro de vaciar el carrito?`,
+            icon: 'warning',
+            showConfirmButton: true,
+            confirmButtonText: 'Sí',
+            showDenyButton: true,
+            denyButtonText: 'No',
+        }).then( (result)=>{
+            if(result.isConfirmed){
+                contenedorCarrito.innerHTML = '';
+                carritoDeCompras = [];
+                actualizarCarrito(carritoDeCompras);
+                swal.fire(
+                    'El carrito fue vaciado',
+                    '',
+                    'success'
+                )
+            }
+        });
+    });
+}
 export const renderProductosCarrito = (producto) => {
     let div = document.createElement('div');
     div.classList.add('productoEnCarrito');
