@@ -9,6 +9,8 @@ import { renderProductosCarrito } from "./carrito.js";
 import { moduloSistema } from "./app.js";
 import { actualizarCarrito } from "./actualizarCarrito.js";
 import { vaciarCarrito } from "./carrito.js";
+import { calcularTotal } from "./carrito.js";
+import { irAPagar } from "./carrito.js";
 
 const contenedorCarrito = document.getElementById('carritoContenedor');
 let carritoStorage = [];
@@ -38,7 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
             renderProductosCarrito(producto);
             actualizarCarrito(carritoStorage);
             vaciarCarrito();
+            calcularTotal();
             eliminarProductoCarrito(producto.id, producto.nombre);
+            irAPagar();
         });
     }
 });

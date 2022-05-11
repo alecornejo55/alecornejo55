@@ -29,7 +29,7 @@ export const mostrarProductos = (productos) => {
     }
     productos.productos.forEach(producto => {
         const article = document.createElement('article');
-        article.classList.add('principal__section-article');
+        article.classList.add('principal__section-article', 'artProducto');
         article.innerHTML = `
             <div class="article_img">
                 <img src="${baseUrl}${producto.img}" alt="${producto.nombre}">
@@ -59,7 +59,7 @@ export const mostrarProductosAside = (productos) => {
     contenedor.appendChild(par);
     productos.productos.forEach(producto => {
         const article = document.createElement('article');
-        article.classList.add('principal_aside__section-article');
+        article.classList.add('principal_aside__section-article', 'artProducto');
         article.innerHTML = `
             <div class="article_img">
                 <img src="${baseUrl}${producto.img}" alt="${producto.nombre}">
@@ -78,3 +78,50 @@ export const mostrarProductosAside = (productos) => {
         agregarProductoCarrito(productos.contenedor, producto);
     });
 }
+const buscarProductos = () => {
+    const inputBuscar = document.getElementById('buscar_en_tienda');
+    if(inputBuscar){
+        // Evento al escribir en el buscador
+        inputBuscar.addEventListener('keyup', () => {
+            // Texto del campo
+            let textoBuscar = inputBuscar.value;
+            if(textoBuscar){
+                textoBuscar = textoBuscar.toLowerCase().trim();
+            }
+            // las filas de la tabla
+            // const listadoTabla = document.getElementsByClassName('artProducto');
+            const listadoTabla = document.querySelectorAll('.artProducto');
+            // console.log(listadoTabla);
+            let encontrado = 0 ;
+            for(const art of listadoTabla){
+                let texto = art.querySelector('span').innerHTML.toLowerCase().trim();
+                if(texto.indexOf(textoBuscar) > -1){
+                    art.parentNode.style.display="";
+                    art.style.display = "";
+                    encontrado++;
+                }
+                else {
+                    art.style.display = "none";
+                }
+                // Calculo si la sección tiene productos, en el caso de que no, oculto la sección
+                const calcular = art.parentNode.querySelectorAll('.artProducto')
+                let cantArts = 0;
+                for(const artCh of calcular){
+                    if(artCh.offsetParent !== null){
+                        cantArts++;
+                    }
+                }
+                if(cantArts == 0){
+                    art.parentNode.style.display="none";
+                }
+            };
+        });
+        // Chrome le pone una cruz al input y eliminar el contenido sin disparar el evento keyup
+        // Esto lo corrige
+        inputBuscar.addEventListener('blur', ()=> {
+            const event = new Event ('keyup');
+            inputBuscar.dispatchEvent(event);
+        });
+    }
+}
+buscarProductos();
