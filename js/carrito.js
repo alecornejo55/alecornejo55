@@ -26,10 +26,7 @@ export const carritoIndex = async (productoId) => {
     eliminarProductoCarrito(producto.id, producto.nombre);
     vaciarCarrito();
     irAPagar();
-    console.log(carritoDeCompras);
-    console.log(productos);
 }
-
 export const eliminarProductoCarrito = (productoId, productoNombre) => {
     carritoDeCompras = JSON.parse(localStorage.getItem("carrito")) ? JSON.parse(localStorage.getItem("carrito")) : carritoDeCompras;
 
@@ -87,8 +84,8 @@ export const renderProductosCarrito = (producto) => {
     div.innerHTML = `
     <div class="col-5">${producto.nombre}</div>
     <div class="col-3">Precio: $${producto.precio}</div>
-    <div class="col-4 text-end" id="cantidad${producto.id}">
-        Cantidad: ${producto.cantidad}
+    <div class="col-4 text-end">
+        <span  id="cantidad${producto.id}">Cantidad: ${producto.cantidad}</span>
         <button id="eliminar${producto.id}" class="boton-eliminar ms-3"><i class="fas fa-trash-alt"></i></button>
     </div>
     `;
@@ -100,7 +97,6 @@ export const renderProductosCarrito = (producto) => {
         contenedorCarrito.appendChild(div);
     }
 }
-
 export const agregarProductoCarrito = (contenedor, producto) => {
     const btnAgregar = document.getElementById(`btnAgregar${contenedor}${producto.id}`);
     btnAgregar.addEventListener('click', () => {
